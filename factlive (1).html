@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FactLive IN — Digital Solutions for Creativity, Growth & Innovation</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0d0d;
+    --ink2: #444;
+    --ink3: #888;
+    --bg: #f5f3ee;
+    --bg2: #fff;
+    --accent: #e05c2a;
+    --accent2: #1a3a5c;
+    --border: #d8d4cc;
+    --nav-h: 68px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    height: var(--nav-h);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 5vw;
+    gap: 2rem;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.35rem;
+    color: var(--ink); text-decoration: none;
+    letter-spacing: -0.02em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 0; margin-left: auto; }
+  .nav-links a {
+    text-decoration: none; color: var(--ink2);
+    font-size: 0.875rem; font-weight: 400;
+    padding: 0.4rem 0.85rem;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-links a:hover { background: var(--border); color: var(--ink); }
+  .nav-cta {
+    background: var(--accent) !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: #c24d20 !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(92vh - var(--nav-h));
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 6rem 5vw;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(224,92,42,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(224,92,42,0.1);
+    color: var(--accent);
+    font-size: 0.8rem; font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(224,92,42,0.25);
+  }
+  .hero-eyebrow::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+    position: relative;
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff; border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { background: #c24d20; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border);
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 400;
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-outline:hover { border-color: var(--ink); background: rgba(0,0,0,0.03); }
+
+  .hero-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .hero-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: transform 0.2s;
+    animation: float 0s ease-in-out;
+  }
+  .hero-card:nth-child(1) { animation-delay: 0s; }
+  .hero-card:nth-child(2) { margin-top: 28px; }
+  .hero-card:nth-child(3) { margin-top: -14px; }
+  .hero-card:nth-child(4) { margin-top: 14px; }
+  .hero-card:hover { transform: translateY(-3px); }
+  .hero-card-icon {
+    width: 38px; height: 38px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .hero-card-icon.o { background: rgba(224,92,42,0.12); }
+  .hero-card-icon.b { background: rgba(26,58,92,0.1); }
+  .hero-card-icon.g { background: rgba(40,140,80,0.1); }
+  .hero-card-icon.p { background: rgba(120,60,180,0.1); }
+  .hero-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem; font-weight: 600; color: var(--ink);
+    line-height: 1.3;
+  }
+  .hero-card p { font-size: 0.75rem; color: var(--ink3); line-height: 1.4; }
+
+  /* ── STATS ── */
+  .stats-bar {
+    background: var(--accent2);
+    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem; font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 6rem 5vw; }
+  .section-tag {
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+  }
+  .section-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1.1;
+    max-width: 560px;
+    margin-bottom: 1.2rem;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--ink2);
+    font-weight: 300; max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--bg2); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .service-card {
+    padding: 2rem 1.75rem;
+    background: var(--bg2);
+    border-right: 1.5px solid var(--border);
+    border-bottom: 1.5px solid var(--border);
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .service-card:hover { background: var(--bg); }
+  .service-icon {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.1rem;
+  }
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.6rem;
+  }
+  .service-card p { font-size: 0.875rem; color: var(--ink3); line-height: 1.6; }
+  .service-card .arrow {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.8rem; color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .service-card .arrow::after { content: ' →'; }
+
+  /* ── LIFECYCLE ── */
+  .lifecycle { background: var(--bg); }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 1rem;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: 10%; right: 10%;
+    height: 1px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .step {
+    display: flex; flex-direction: column;
+    align-items: center; text-align: center;
+    padding: 0 1.5rem 2rem;
+    position: relative; z-index: 1;
+  }
+  .step-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--bg2);
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .step.active .step-num {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .step h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.5rem;
+  }
+  .step p { font-size: 0.8rem; color: var(--ink3); line-height: 1.5; }
+
+  /* ── LEARNING ── */
+  .learning { background: var(--ink); color: #fff; }
+  .learning .section-heading { color: #fff; max-width: 100%; }
+  .learning .section-sub { color: rgba(255,255,255,0.55); }
+  .learning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .learn-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 1.4rem 1.2rem;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: default;
+  }
+  .learn-card:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(224,92,42,0.4);
+  }
+  .learn-card .badge {
+    display: inline-block;
+    background: rgba(224,92,42,0.2);
+    color: #f5855a;
+    font-size: 0.7rem; font-weight: 500;
+    padding: 0.2rem 0.6rem; border-radius: 100px;
+    margin-bottom: 0.8rem;
+  }
+  .learn-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    color: #fff; margin-bottom: 0.4rem;
+  }
+  .learn-card p { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* ── NEWS ── */
+  .news { background: var(--bg2); }
+  .news-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .news-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .news-card:hover { transform: translateY(-4px); }
+  .news-card:first-child {
+    grid-column: span 2;
+  }
+  .news-img {
+    width: 100%; height: 200px;
+    background: linear-gradient(135deg, #1a3a5c 0%, #2a5080 100%);
+    display: flex; align-items: flex-end;
+    padding: 1.2rem;
+  }
+  .news-card:first-child .news-img { height: 240px; }
+  .news-tag {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem; font-weight: 500;
+    padding: 0.25rem 0.6rem; border-radius: 4px;
+    display: inline-block;
+  }
+  .news-body { padding: 1.25rem; }
+  .news-body h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  .news-body p { font-size: 0.83rem; color: var(--ink3); line-height: 1.5; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--bg); }
+  .contact-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: start;
+  }
+  .contact-info h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    color: var(--ink); margin-bottom: 1rem;
+  }
+  .contact-info p { color: var(--ink2); font-weight: 300; margin-bottom: 2rem; line-height: 1.7; }
+  .contact-detail {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1rem; font-size: 0.9rem;
+  }
+  .contact-detail .icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--bg2); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-form {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 0.8rem; font-weight: 500; color: var(--ink2); }
+  .field input, .field textarea, .field select {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--ink);
+    background: var(--bg);
+    outline: none;
+    transition: border-color 0.15s;
+    resize: vertical;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    border-color: var(--accent);
+  }
+  .field textarea { min-height: 100px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 4rem 5vw 2rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-brand h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem; font-weight: 800; color: #fff;
+    margin-bottom: 0.8rem;
+  }
+  .footer-brand h3 span { color: var(--accent); }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 280px; margin-bottom: 1.5rem; }
+  .social-row { display: flex; gap: 10px; }
+  .social-btn {
+    width: 34px; height: 34px; border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.6); font-size: 0.85rem;
+    text-decoration: none; transition: background 0.15s;
+  }
+  .social-btn:hover { background: rgba(255,255,255,0.15); }
+  .footer-col h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem; font-weight: 600; color: #fff;
+    margin-bottom: 1rem; letter-spacing: 0.02em;
+  }
+  .footer-col a {
+    display: block; color: rgba(255,255,255,0.45);
+    text-decoration: none; font-size: 0.825rem;
+    margin-bottom: 0.55rem;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content { animation: fadeUp 0.6s ease both; }
+  .hero-visual  { animation: fadeUp 0.6s 0.2s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 5vw; min-height: auto; }
+    .hero-visual { display: none; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps::before { display: none; }
+    .news-grid { grid-template-columns: 1fr; }
+    .news-card:first-child { grid-column: span 1; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Fact<span>Live</span> IN</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#learning">Learning Hub</a>
+    <a href="#news">News</a>
+    <a href="#contact">Blog</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="btn-primary nav-cta" style="padding:0.4rem 1rem; border-radius:6px;">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Digital-First Company · India</div>
+    <h1>Digital Solutions for <em>Creativity,</em> Growth &amp; Innovation</h1>
+    <p>FactLive helps businesses, creators, professionals, and learners build a complete digital presence — from zero to thriving online identity.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Explore Solutions →</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-icon o">🌐</div>
+      <h4>Digital Solution</h4>
+      <p>Website setup, domain, digital presence build</p>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon b">🎨</div>
+      <h4>Design Studio</h4>
+      <p>Creative design, brand visuals, content assets</p>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon g">📈</div>
+      <h4>Digital Marketing</h4>
+      <p>Ads, branding, and growth campaigns</p>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon p">📚</div>
+      <h4>Learning Hub</h4>
+      <p>UPSC, management, and skill courses</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">500<span>+</span></div>
+    <div class="stat-label">Clients Served</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Core Services</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">200<span>+</span></div>
+    <div class="stat-label">Learning Resources</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4<span>+</span></div>
+    <div class="stat-label">Years in Digital</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-tag">What We Do</div>
+  <h2 class="section-heading">Services to Elevate Your Presence</h2>
+  <p class="section-sub">From getting online for the first time to scaling a full-fledged digital operation — we cover every layer.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(224,92,42,0.1);">🌐</div>
+      <h3>Digital Solution</h3>
+      <p>Domain registration, website setup, and building your complete digital real estate from scratch.</p>
+      <a href="#" class="arrow">Explore</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(120,60,180,0.1);">🎨</div>
+      <h3>Design Studio</h3>
+      <p>Creative visuals, brand identity, posters, social content, and everything your brand needs to look sharp.</p>
+      <a href="#" class="arrow">Explore</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(40,140,80,0.1);">📣</div>
+      <h3>Digital Marketing</h3>
+      <p>Marketing strategy, ad campaigns, branding, and social media management to grow your audience.</p>
+      <a href="#" class="arrow">Explore</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(26,58,92,0.1);">📊</div>
+      <h3>Data &amp; Research</h3>
+      <p>Data analysis, research intelligence, and insights that inform smarter business decisions.</p>
+      <a href="#" class="arrow">Explore</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(200,150,30,0.1);">🛒</div>
+      <h3>E-Commerce Setup</h3>
+      <p>Private online stores, product catalog setup, and end-to-end e-commerce platform creation.</p>
+      <a href="#" class="arrow">Explore</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(220,60,80,0.1);">📚</div>
+      <h3>Learning Hub</h3>
+      <p>UPSC, management, psychology, and digital skill courses — knowledge built for real-world impact.</p>
+      <a href="#learning" class="arrow">Explore</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIFECYCLE -->
+<section class="lifecycle">
+  <div class="section-tag">Our Process</div>
+  <h2 class="section-heading">Our Proven Helping Lifecycle</h2>
+  <p class="section-sub">A clear, step-by-step journey from zero digital presence to a thriving online business.</p>
+  <div class="steps">
+    <div class="step active">
+      <div class="step-num">01</div>
+      <h4>Domain &amp; Website</h4>
+      <p>Register your domain and set up a professional website that represents your brand.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>Content &amp; Design</h4>
+      <p>Build visual content, design assets, and your complete digital real estate.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>Marketing &amp; Ads</h4>
+      <p>Launch targeted marketing campaigns and advertising to reach your audience.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Sell Online</h4>
+      <p>Create a private e-commerce platform and start selling your products and services.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING HUB -->
+<section class="learning" id="learning">
+  <div class="section-tag" style="color:#f5855a;">Knowledge Platform</div>
+  <h2 class="section-heading" style="max-width:100%;">Learning Hub — Knowledge for Real-World Impact</h2>
+  <p class="section-sub">Exceptional eBooks, eNotes, and learning modules for your civil services journey and professional growth.</p>
+  <div class="learning-grid">
+    <div class="learn-card">
+      <div class="badge">UPSC</div>
+      <h4>UPSC Prep Academy</h4>
+      <p>Mains, Prelims, and PSIR optional — comprehensive study material for civil services.</p>
+    </div>
+    <div class="learn-card">
+      <div class="badge">PSIR</div>
+      <h4>Political Science &amp; IR</h4>
+      <p>Paper 1 &amp; 2 — Part A and B with detailed notes on political ideologies and international relations.</p>
+    </div>
+    <div class="learn-card">
+      <div class="badge">Management</div>
+      <h4>Management Learning</h4>
+      <p>Business strategy, portfolio building, and top skills for the modern workforce.</p>
+    </div>
+    <div class="learn-card">
+      <div class="badge">Psychology</div>
+      <h4>Psychology Learning</h4>
+      <p>Foundations of psychology, dark psychology, and practical mind science.</p>
+    </div>
+    <div class="learn-card">
+      <div class="badge">Digital</div>
+      <h4>Professional &amp; Digital</h4>
+      <p>Digital skills, professional development, and career-ready competencies.</p>
+    </div>
+    <div class="learn-card">
+      <div class="badge">Free</div>
+      <h4>eLibrary Docs</h4>
+      <p>Free bestseller eBooks and documents available to read and download on any device.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="section-tag">News &amp; Insights</div>
+  <h2 class="section-heading">Stay Informed, Stay Ahead</h2>
+  <p class="section-sub">Tech, society, politics, economy, and business — news that matters, told clearly.</p>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-img" style="background:linear-gradient(135deg,#1a3a5c,#2a6a9c);">
+        <span class="news-tag">Technology &amp; Society</span>
+      </div>
+      <div class="news-body">
+        <h3>The Dual-Edged Sword: How Technology Shapes Our Society</h3>
+        <p>An in-depth look at how digital transformation is simultaneously empowering and challenging communities across India and the world.</p>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-img" style="background:linear-gradient(135deg,#3a1a1a,#7a2020);">
+        <span class="news-tag">Socio-Political</span>
+      </div>
+      <div class="news-body">
+        <h3>Delhi Blast Case: A Deep Dive into the Allegations</h3>
+        <p>A comprehensive analysis of the allegations, legal proceedings, and socio-political implications.</p>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-img" style="background:linear-gradient(135deg,#1a2a3a,#2a4060);">
+        <span class="news-tag">Psychology</span>
+      </div>
+      <div class="news-body">
+        <h3>Exploring the Depths of Dark Psychology</h3>
+        <p>Understanding manipulation, persuasion, and cognitive biases in everyday life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="section-tag">Get In Touch</div>
+      <h2>Let's Build Your Digital Presence Together</h2>
+      <p>Whether you're an individual, a startup, or an MSME — we're here to help you go from zero to a thriving digital identity.</p>
+      <div class="contact-detail">
+        <div class="icon">📲</div>
+        <div>
+          <div style="font-size:0.8rem;color:var(--ink3);margin-bottom:2px;">Phone</div>
+          <div style="font-weight:500;">+91-9711-277-478</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon">📩</div>
+        <div>
+          <div style="font-size:0.8rem;color:var(--ink3);margin-bottom:2px;">Email</div>
+          <div style="font-weight:500;">factlive.in@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon">🇮🇳</div>
+        <div>
+          <div style="font-size:0.8rem;color:var(--ink3);margin-bottom:2px;">Location</div>
+          <div style="font-weight:500;">India</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:0.25rem;">Send a Message</h3>
+      <p style="font-size:0.825rem;color:var(--ink3);margin-bottom:0.5rem;">We'll get back to you within 24 hours.</p>
+      <div class="form-row">
+        <div class="field">
+          <label>Your Name</label>
+          <input type="text" placeholder="Anand Kumar">
+        </div>
+        <div class="field">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX">
+        </div>
+      </div>
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label>Service Interested In</label>
+        <select>
+          <option>Select a service…</option>
+          <option>Digital Solution</option>
+          <option>Design Studio</option>
+          <option>Digital Marketing</option>
+          <option>Data &amp; Research</option>
+          <option>Learning Hub</option>
+          <option>UPSC Prep Academy</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your project or requirement…"></textarea>
+      </div>
+      <button class="btn-primary" style="align-self:flex-start;" onclick="alert('Thank you! We will get back to you soon.')">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Fact<span>Live</span> IN</h3>
+      <p>A digital-first company delivering creative services, digital solutions, research intelligence, and learning resources into one open digital canvas.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">ig</a>
+        <a href="#" class="social-btn">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Digital Solution</a>
+      <a href="#">Design Studio</a>
+      <a href="#">Digital Marketing</a>
+      <a href="#">Data Desk</a>
+      <a href="#">E-Commerce Setup</a>
+    </div>
+    <div class="footer-col">
+      <h4>Learning Hub</h4>
+      <a href="#">UPSC Prep Academy</a>
+      <a href="#">PSIR Optional</a>
+      <a href="#">Management Learning</a>
+      <a href="#">Psychology Learning</a>
+      <a href="#">eLibrary Docs</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About FactLive</a>
+      <a href="#">News &amp; Insights</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 FactLive Digital Solution, India. All rights reserved.</span>
+    <span>📩 factlive.in@gmail.com &nbsp;·&nbsp; 📲 +91-9711-277-478</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
